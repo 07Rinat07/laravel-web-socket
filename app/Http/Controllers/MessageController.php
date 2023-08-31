@@ -11,7 +11,7 @@ class MessageController extends Controller
 {
     public function index()
     {
-        $messages = Message::all();
+        $messages = Message::latest()->get();
         $messages = MessageResource::collection($messages)->resolve();
         return inertia('Message/Index', compact('messages'));
     }
