@@ -1,7 +1,14 @@
 <template>
     <div class="w-1/2 mx-auto py-6">
-        <div class="mb-4">
-            Messages
+        <div v-if="messages.length > 0" class="mb-4">
+            <h3> Messages</h3>
+            <div>
+                <div v-for="message in messages" >
+                    <p>{{message.id}}</p>
+                    <p>{{message.body}}</p>
+                    <p>{{message.id}}</p>
+                </div>
+            </div>
         </div>
         <div>
             <div class="mb-4">
@@ -17,7 +24,11 @@
 
 <script>
 export default {
-    name: "Index"
+    name: "Index",
+
+    props: [
+        'messages'
+    ]
 }
 </script>
 

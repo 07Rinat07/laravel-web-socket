@@ -32,6 +32,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/messages', [\App\Http\Controllers\MessageController::class, 'index']);
+    Route::post('/messages', [\App\Http\Controllers\MessageController::class, 'store']);
 
 
 
