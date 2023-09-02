@@ -4,7 +4,7 @@
         User {{user.name}}
     </div>
     <div class="mb-4">
-        <a href="#"  class="rounded-lg block w-40 bg-sky-400 text-white text-center py-2">Send like</a>
+        <a @click.prevent="sendLike" href="#"  class="rounded-lg block w-40 bg-sky-400 text-white text-center py-2">Send like</a>
     </div>
     <div v-if="like_str">
         {{like_str}}
@@ -25,6 +25,15 @@ export default {
     data() {
         return {
             like_str: ''
+        }
+    },
+
+    methods: {
+        sendLike() {
+            axios.post(`/users/${this.user.id}`, {from_id: this.$page.props.auth.user.id})
+                .then(res => {
+                    this.like_str = res.data.like_str
+                })
         }
     }
 }
