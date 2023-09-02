@@ -34,8 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/messages', [\App\Http\Controllers\MessageController::class, 'index']);
     Route::post('/messages', [\App\Http\Controllers\MessageController::class, 'store']);
 
-    Route::get('/users/{user}', [\App\Http\Controllers\UserController::class,
-         'show']);
+    Route::get('/users/{user}', [\App\Http\Controllers\UserController::class, 'show']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
